@@ -6,7 +6,6 @@ const orderSummary = (props) => {
   const ingredients = Object.keys(props.ingredients).map((ing, i) => {
     return <li key={i}>{ing}: {props.ingredients[ing]}</li>
   });
-  console.log(ingredients);
   return (
     <Aux>
       <h3>Your Order</h3>
