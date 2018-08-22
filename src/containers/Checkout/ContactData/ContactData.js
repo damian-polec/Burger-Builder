@@ -17,7 +17,11 @@ class ContactData extends Component {
           type:'text',
           placeholder: 'Your Name'
         },
-        value: ''
+        value: '',
+        validation: {
+          required: true
+        },
+        valid: false
       },
       email:{
         elementType: 'input',
@@ -25,15 +29,23 @@ class ContactData extends Component {
           type:'email',
           placeholder: 'Your E-mail'
         },
-        value: ''
+        value: '',
+        validation: {
+          required: true
+        },
+        valid: false
       }, 
-     street: {
-      elementType: 'input',
-      elementConfig: {
-        type:'text',
-        placeholder: 'Your Street'
-      },
-      value: ''
+      street: {
+        elementType: 'input',
+        elementConfig: {
+          type:'text',
+          placeholder: 'Your Street'
+        },
+        value: '',
+        validation: {
+          required: true
+        },
+        valid: false
       },
       postalCode: {
         elementType: 'input',
@@ -41,10 +53,24 @@ class ContactData extends Component {
           type:'text',
           placeholder: 'Your Postal Code'
         },
-        value: ''
+        value: '',
+        validation: {
+          required: true
+        },
+        valid: false
       }, 
     },
     loading: false
+  }
+
+  checkValidity(value, rules) {
+    let isValid = false;
+
+    if (rules.required) {
+      isValid = value.trim() !== ''; 
+    }
+
+    return isValid;
   }
 
   orderHandler = (event) => { 
@@ -82,6 +108,7 @@ class ContactData extends Component {
     };
 
     updatedFormElement.value = event.target.value;
+    updatedFormElement.valid = this.checkValidity(this.updatedFormElement.value, updatedFormElement.validation);
     updatedOrderForm[elementId] = updatedFormElement
     this.setState({orderForm: updatedOrderForm});
   }
