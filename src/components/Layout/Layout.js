@@ -3,7 +3,7 @@ import Aux from '../../hoc/Auxiliary/Auxiliary';
 import Toolbar from '../Navigation/Toolbar/Toolbar'
 import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 
-import classes from './Layout.css';
+import classes from './Layout.module.css';
 
 class Layout extends Component {
   state = {
